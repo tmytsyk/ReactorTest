@@ -12,8 +12,8 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import com.app.reactortest.GiphyObject
 import com.app.reactortest.R
+import com.app.reactortest.model.GiphyObject
 
 
 typealias IPresenter = MainContract.Presenter

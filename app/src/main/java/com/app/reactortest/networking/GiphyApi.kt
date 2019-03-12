@@ -1,8 +1,8 @@
 package com.app.reactortest.networking
 
-import com.app.reactortest.GiphyObject
-import com.app.reactortest.MetaObject
-import com.app.reactortest.PaginationObject
+import com.app.reactortest.model.GiphyObject
+import com.app.reactortest.model.MetaObject
+import com.app.reactortest.model.PaginationObject
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

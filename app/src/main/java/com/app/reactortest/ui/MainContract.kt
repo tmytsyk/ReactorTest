@@ -1,6 +1,6 @@
 package com.app.reactortest.ui
 
-import com.app.reactortest.GiphyObject
+import com.app.reactortest.model.GiphyObject
 
 
 interface MainContract {

@@ -1,6 +1,6 @@
 package com.app.reactortest.ui
 
-import com.app.reactortest.PaginationObject
+import com.app.reactortest.model.PaginationObject
 import com.app.reactortest.networking.GiphyApiClient
 import com.app.reactortest.networking.SearchResponse
 import io.reactivex.android.schedulers.AndroidSchedulers

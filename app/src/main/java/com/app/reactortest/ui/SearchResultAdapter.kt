@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.app.reactortest.GiphyObject
 import com.app.reactortest.R
+import com.app.reactortest.model.GiphyObject
 import com.bumptech.glide.Glide
 
 class SearchResultAdapter(list: List<GiphyObject>) : RecyclerView.Adapter<SearchResultAdapter.ViewHolder>() {
