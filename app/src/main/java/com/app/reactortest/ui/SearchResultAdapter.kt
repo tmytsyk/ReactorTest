@@ -11,37 +11,37 @@ import com.app.reactortest.R
 import com.bumptech.glide.Glide
 
 class SearchResultAdapter(list: List<GiphyObject>) : RecyclerView.Adapter<SearchResultAdapter.ViewHolder>() {
-    private var _list: MutableList<GiphyObject> = ArrayList()
+    private var list: MutableList<GiphyObject> = ArrayList()
 
     init {
-        _list.addAll(list)
+        this.list.addAll(list)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_giphy_list, parent, false))
 
-    override fun getItemCount(): Int = _list.size
+    override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.itemView.context)
             .asGif()
             .placeholder(R.drawable.im_no_image)
             .placeholder(R.drawable.im_no_image)
-            .load(_list[position].images.imagePreview.url)
+            .load(list[position].images.imagePreview.url)
             .into(holder.imgGif)
 
 
-        holder.tvTitle.text = _list[position].title
+        holder.tvTitle.text = list[position].title
     }
 
     fun updateData(list: List<GiphyObject>, isPagination: Boolean) {
         if (!isPagination) {
-            _list.clear()
-            _list.addAll(list)
+            this.list.clear()
+            this.list.addAll(list)
             notifyDataSetChanged()
         } else {
-            val insertedPosition = _list.count() - 1
-            _list.addAll(list)
+            val insertedPosition = this.list.count() - 1
+            this.list.addAll(list)
             notifyItemRangeInserted(insertedPosition, list.count())
         }
     }

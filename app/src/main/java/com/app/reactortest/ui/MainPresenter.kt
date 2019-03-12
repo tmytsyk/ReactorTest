@@ -15,7 +15,7 @@ typealias ResponseFunction = (SearchResponse?) -> Unit
 class MainPresenter : MainContract.Presenter {
     private companion object {
         const val TAG = "MainPresenter"
-        const val UNKWNOWN_ERROR = "Unknown Error"
+        const val UNKNOWN_ERROR = "Unknown Error"
         const val DEFAULT_DELAY_MILLIS = 1500L
         const val INITIAL_OFFSET = 0
     }
@@ -49,7 +49,7 @@ class MainPresenter : MainContract.Presenter {
 
     private val onError: (Throwable) -> Unit = {
         it.printStackTrace()
-        view?.displayError(it.message ?: UNKWNOWN_ERROR)
+        view?.displayError(it.message ?: UNKNOWN_ERROR)
     }
 
     private val searchResponse: ResponseFunction =

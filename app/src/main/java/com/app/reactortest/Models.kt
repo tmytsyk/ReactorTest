@@ -18,20 +18,20 @@ data class ImagesInfo(
 )
 
 data class GiphyImage(
-    val url: String,         // The publicly-accessible direct URL for this GIF.
-    val size: String?,        // The size of this GIF in bytes.
+    val url: String,
+    val size: String?,
     val width: String,
     val height: String
 )
 
 data class PaginationObject(
-    val offset: Int,        // position in pagination
-    @SerializedName("total_count") val totalCount: Int,    // total number of item available
-    val count: Int          // total number of item returned
+    val offset: Int,
+    @SerializedName("total_count") val totalCount: Int,
+    val count: Int
 )
 
 data class MetaObject(
-    val msg: String,        // response message
-    val status: Int,        // response status code
-    @SerializedName("response_id") val responseId: String  // unique response id
+    val msg: String,
+    val status: Int,
+    @SerializedName("response_id") val responseId: String
 )
