@@ -1,12 +1,10 @@
 package com.app.reactortest.ui
 
+import com.app.reactortest.api.SearchResponse
+import com.app.reactortest.manager.ApiManager
 import com.app.reactortest.model.PaginationObject
-import com.app.reactortest.networking.GiphyApiClient
-import com.app.reactortest.networking.SearchResponse
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
 typealias ResponseFunction = (SearchResponse?) -> Unit
@@ -73,9 +71,7 @@ class MainPresenter : MainContract.Presenter {
 
     private val requestDisposable: (query: String, offset: Int, response: ResponseFunction) -> Disposable =
         { query, offset, function ->
-            GiphyApiClient.apiAppClient.searchGifs(query = query, offset = offset)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
+            ApiManager.loadGif(query = query, offset = offset)
                 .doOnSubscribe { view?.showLoadingProgress() }
                 .doOnComplete { view?.hideLoadingProgress() }
                 .doOnError { view?.hideLoadingProgress() }

@@ -1,4 +1,4 @@
-package com.app.reactortest.networking.response
+package com.app.reactortest.api.response
 
 import com.google.gson.annotations.SerializedName
 
