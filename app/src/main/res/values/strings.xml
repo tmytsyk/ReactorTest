@@ -1,0 +1,5 @@
+<resources>
+  <string name="app_name">ReactorTest</string>
+  <string name="activity_main_et_search_hint">Enter word</string>
+  <string name="activity_main_tv_no_gifs">There is nothing to show for you :(\n May you try another word(s)?</string>
+</resources>
