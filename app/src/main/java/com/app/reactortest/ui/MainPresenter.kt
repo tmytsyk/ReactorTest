@@ -14,7 +14,6 @@ typealias ResponseFunction = (SearchResponse?) -> Unit
 
 class MainPresenter : MainContract.Presenter {
     private companion object {
-        const val TAG = "MainPresenter"
         const val UNKNOWN_ERROR = "Unknown Error"
         const val DEFAULT_DELAY_MILLIS = 1500L
         const val INITIAL_OFFSET = 0

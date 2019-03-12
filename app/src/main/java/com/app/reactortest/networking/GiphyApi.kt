@@ -23,27 +23,18 @@ object GiphyApiClient {
     private const val DEFAULT_LANG = "ru"
     private const val DEFAULT_RATING = "g"
 
-
     private val interceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
     private val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
-    private lateinit var appService: AppApiInterface
-
-    val apiAppClient: AppApiInterface
-        get() {
-            val restAdapter = Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build()
-
-            appService = restAdapter.create(AppApiInterface::class.java)
-
-            return appService
-        }
+    val apiAppClient: AppApiInterface = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .client(client)
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .build()
+        .create(AppApiInterface::class.java)
 
     interface AppApiInterface {
         @GET("/v1/gifs/search")

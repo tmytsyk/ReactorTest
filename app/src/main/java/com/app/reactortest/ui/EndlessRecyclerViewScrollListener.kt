@@ -5,7 +5,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.StaggeredGridLayoutManager
 
-
 abstract class EndlessRecyclerViewScrollListener : RecyclerView.OnScrollListener {
     private var visibleThreshold = 5
     private var currentPage = 0
@@ -21,24 +20,12 @@ abstract class EndlessRecyclerViewScrollListener : RecyclerView.OnScrollListener
 
     constructor(layoutManager: GridLayoutManager) {
         this.mLayoutManager = layoutManager
-        visibleThreshold = visibleThreshold * layoutManager.spanCount
+        visibleThreshold *= layoutManager.spanCount
     }
 
     constructor(layoutManager: StaggeredGridLayoutManager) {
         this.mLayoutManager = layoutManager
-        visibleThreshold = visibleThreshold * layoutManager.spanCount
-    }
-
-    fun getLastVisibleItem(lastVisibleItemPositions: IntArray): Int {
-        var maxSize = 0
-        for (i in lastVisibleItemPositions.indices) {
-            if (i == 0) {
-                maxSize = lastVisibleItemPositions[i]
-            } else if (lastVisibleItemPositions[i] > maxSize) {
-                maxSize = lastVisibleItemPositions[i]
-            }
-        }
-        return maxSize
+        visibleThreshold *= layoutManager.spanCount
     }
 
     override fun onScrolled(view: RecyclerView, dx: Int, dy: Int) {
@@ -74,14 +61,23 @@ abstract class EndlessRecyclerViewScrollListener : RecyclerView.OnScrollListener
         }
     }
 
-    // Call this method whenever performing new searches
     fun resetState() {
         this.currentPage = this.startingPageIndex
         this.previousTotalItemCount = 0
         this.loading = true
     }
 
-    // Defines the process for actually loading more data based on page
-    abstract fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView)
+    private fun getLastVisibleItem(lastVisibleItemPositions: IntArray): Int {
+        var maxSize = 0
+        for (i in lastVisibleItemPositions.indices) {
+            if (i == 0) {
+                maxSize = lastVisibleItemPositions[i]
+            } else if (lastVisibleItemPositions[i] > maxSize) {
+                maxSize = lastVisibleItemPositions[i]
+            }
+        }
+        return maxSize
+    }
 
+    abstract fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView)
 }
