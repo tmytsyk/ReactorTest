@@ -25,11 +25,9 @@ class SearchResultAdapter(list: List<GiphyObject>) : RecyclerView.Adapter<Search
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.itemView.context)
             .asGif()
-            .placeholder(R.drawable.im_no_image)
-            .placeholder(R.drawable.im_no_image)
             .load(list[position].images.imagePreview.url)
+            .placeholder(R.drawable.im_no_image)
             .into(holder.imgGif)
-
 
         holder.tvTitle.text = list[position].title
     }
